@@ -1,0 +1,229 @@
+mysql>create table student (
+    sno int,
+    sname varchar(50),
+    marks int,
+    city varchar(50),
+    mobile varchar(15),
+    gender varchar(10)
+);
+
+mysql>insert into students values(1, 'sahithi', 96, 'hyderbad', '99999999', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(2, 'vani', 96, 'hyderbad', '999996549', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(3, 'navya', 96, 'hyderbad', '999996549', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(3, 'teju', 96, 'hyderbad', '999996549', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(1, 'sahithi', 96, 'hyderbad', '99999999', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(2, 'vani', 92, 'mumbai', '999996549', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(3, 'navya', 91, 'lb nagar', '993396549', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(4, 'teju', 92, 'warangal', '998766549', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(5, 'supreeth', 95, 'jangaon', '964536729', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(6, 'saiumesh', 97, 'jangaon', '962541561', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(7, 'pandu', 93, 'nekrekal', '924554561', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(8, 'sagarika', 92, 'pwc', '935455251', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(9, 'saicharan', 83, 'usa', '925433251', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(10, 'shiva', 85, 'pune', '925473251', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(11, 'sona', 87, 'pune', '825473251', 'female'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(12, 'sunny', 81, 'pune', '825823251', 'male'),
+Query OK, 1 row affected (0.00 sec)
+
+mysql>insert into students values(13, 'john', 81, 'bangalore', '821123251', 'male');
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> select *from student;
++------+-----------+-------+-----------+-----------+--------+
+| sno  | sname     | marks | city      | mobile    | gender |
++------+-----------+-------+-----------+-----------+--------+
+|    1 | sahithi   |    96 | hyderbad  |  99999999 | female |
+|    2 | vani      |    96 | hyderbad  | 999996549 | female |
+|    3 | navya     |    96 | hyderbad  | 999996549 | male   |
+|    3 | teju      |    96 | hyderbad  | 999996549 | female |
+|    1 | sahithi   |    96 | hyderbad  |  99999999 | female |
+|    2 | vani      |    92 | mumbai    | 999996549 | female |
+|    3 | navya     |    91 | lb nagar  | 993396549 | male   |
+|    4 | teju      |    92 | warangal  | 998766549 | female |
+|    5 | supreeth  |    95 | jangaon   | 964536729 | male   |
+|    6 | saiumesh  |    97 | jangaon   | 962541561 | male   |
+|    7 | pandu     |    93 | nekrekal  | 924554561 | female |
+|    8 | sagarika  |    92 | pwc       | 935455251 | female |
+|    9 | saicharan |    83 | usa       | 925433251 | male   |
+|   10 | shiva     |    85 | pune      | 925473251 | male   |
+|   11 | sona      |    87 | pune      | 825473251 | female |
+|   12 | sunny     |    81 | pune      | 825823251 | male   |
+|   13 | john      |    81 | bangalore | 821123251 | male   |
++------+-----------+-------+-----------+-----------+--------+
+17 rows in set (0.00 sec)
+
+mysql> select *from student where city='pune';
++------+-------+-------+------+-----------+--------+
+| sno  | sname | marks | city | mobile    | gender |
++------+-------+-------+------+-----------+--------+
+|   10 | shiva |    85 | pune | 925473251 | male   |
+|   11 | sona  |    87 | pune | 825473251 | female |
+|   12 | sunny |    81 | pune | 825823251 | male   |
++------+-------+-------+------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from student where city='pune' or city='hyderbad';
++------+---------+-------+----------+-----------+--------+
+| sno  | sname   | marks | city     | mobile    | gender |
++------+---------+-------+----------+-----------+--------+
+|    1 | sahithi |    96 | hyderbad |  99999999 | female |
+|    2 | vani    |    96 | hyderbad | 999996549 | female |
+|    3 | navya   |    96 | hyderbad | 999996549 | male   |
+|    3 | teju    |    96 | hyderbad | 999996549 | female |
+|    1 | sahithi |    96 | hyderbad |  99999999 | female |
+|   10 | shiva   |    85 | pune     | 925473251 | male   |
+|   11 | sona    |    87 | pune     | 825473251 | female |
+|   12 | sunny   |    81 | pune     | 825823251 | male   |
++------+---------+-------+----------+-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student where city='hyderbad' and gender='female' union select *from student where city='pune' and gender='male' union select *from student where city='bangalore';
++------+---------+-------+-----------+-----------+--------+
+| sno  | sname   | marks | city      | mobile    | gender |
++------+---------+-------+-----------+-----------+--------+
+|    1 | sahithi |    96 | hyderbad  |  99999999 | female |
+|    2 | vani    |    96 | hyderbad  | 999996549 | female |
+|    3 | teju    |    96 | hyderbad  | 999996549 | female |
+|   10 | shiva   |    85 | pune      | 925473251 | male   |
+|   12 | sunny   |    81 | pune      | 825823251 | male   |
+|   13 | john    |    81 | bangalore | 821123251 | male   |
++------+---------+-------+-----------+-----------+--------+
+6 rows in set (0.00 sec)
+
+
+mysql> select *from student where city='hyderbad' and gender='male' and marks>70 union select *from student where city='hyderbad' and gender='female' and marks>50 union select*from student where city='pune' and gender='male';
++------+---------+-------+----------+-----------+--------+
+| sno  | sname   | marks | city     | mobile    | gender |
++------+---------+-------+----------+-----------+--------+
+|    3 | navya   |    96 | hyderbad | 999996549 | male   |
+|    1 | sahithi |    96 | hyderbad |  99999999 | female |
+|    2 | vani    |    96 | hyderbad | 999996549 | female |
+|    3 | teju    |    96 | hyderbad | 999996549 | female |
+|   10 | shiva   |    85 | pune     | 925473251 | male   |
+|   12 | sunny   |    81 | pune     | 825823251 | male   |
++------+---------+-------+----------+-----------+--------+
+6 rows in set (0.00 sec)
+
+
+mysql> select *from student where marks between 50 and 90 and city in('hyderbad','bangalore');
++------+-------+-------+-----------+-----------+--------+
+| sno  | sname | marks | city      | mobile    | gender |
++------+-------+-------+-----------+-----------+--------+
+|   13 | john  |    81 | bangalore | 821123251 | male   |
++------+-------+-------+-----------+-----------+--------+
+1 row in set (0.00 sec)
+
+
+mysql> select *from student where sname like '%s%a';
++------+----------+-------+------+-----------+--------+
+| sno  | sname    | marks | city | mobile    | gender |
++------+----------+-------+------+-----------+--------+
+|    8 | sagarika |    92 | pwc  | 935455251 | female |
+|   10 | shiva    |    85 | pune | 925473251 | male   |
+|   11 | sona     |    87 | pune | 825473251 | female |
++------+----------+-------+------+-----------+--------+
+3 rows in set (0.00 sec)
+
+
+mysql> select city,count(*) as members from student group by city;
++-----------+---------+
+| city      | members |
++-----------+---------+
+| bangalore |       1 |
+| hyderbad  |       5 |
+| jangaon   |       2 |
+| lb nagar  |       1 |
+| mumbai    |       1 |
+| nekrekal  |       1 |
+| pune      |       3 |
+| pwc       |       1 |
+| usa       |       1 |
+| warangal  |       1 |
++-----------+---------+
+10 rows in set (0.00 sec)
+
+
+mysql> select city,avg(marks) as avg_score from student group by city order by avg_score desc limit 1;
++---------+-----------+
+| city    | avg_score |
++---------+-----------+
+| jangaon |   96.0000 |
++---------+-----------+
+1 row in set (0.00 sec)
+
+
+mysql> select city,max(marks) as top_score from student group by city order by top_score desc;
++-----------+-----------+
+| city      | top_score |
++-----------+-----------+
+| jangaon   |        97 |
+| hyderbad  |        96 |
+| nekrekal  |        93 |
+| pwc       |        92 |
+| mumbai    |        92 |
+| warangal  |        92 |
+| lb nagar  |        91 |
+| pune      |        87 |
+| usa       |        83 |
+| bangalore |        81 |
++-----------+-----------+
+10 rows in set (0.00 sec)
+
+
+mysql> select *from student where city='hyderbad' order by marks desc limit 1;
++------+---------+-------+----------+----------+--------+
+| sno  | sname   | marks | city     | mobile   | gender |
++------+---------+-------+----------+----------+--------+
+|    1 | sahithi |    96 | hyderbad | 99999999 | female |
++------+---------+-------+----------+----------+--------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
